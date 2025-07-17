@@ -1,8 +1,11 @@
 /* eslint-disable no-await-in-loop */
 export default async function decorate(block) {
+  const podProgressContainer = document.querySelector('.pod-progress-container');
+  const container = block.closest('[data-sheet-name]');
   block.style.display = 'none';
   const anchor = block.querySelector('a');
   const url = anchor.href;
+  const sheetName = podProgressContainer.attributes['data-sheet-name']?.value || 'test';
 
   async function fetchAllRows(urls) {
     let allData = [];
@@ -10,7 +13,7 @@ export default async function decorate(block) {
     let total = Infinity;
 
     while (offset < total) {
-      const response = await fetch(`${urls}?offset=${offset}`);
+      const response = await fetch(`${urls}?sheet=${sheetName}&&offset=${offset}`);
       const json = await response.json();
 
       if (!json.data || json.data.length === 0) break;

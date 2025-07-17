@@ -1,0 +1,14 @@
+indices:
+  mysite:
+    include:
+      - /pod-report
+    target: /query-index.xlsx
+    properties:
+      author:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el,'content')
+      title:
+        select: main h1:first-of-type
+        value: |
+          textContent(el)

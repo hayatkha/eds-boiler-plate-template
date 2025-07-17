@@ -8,7 +8,7 @@ indices:
         select: head > meta[property="og:title"]
         value: |
           attribute(el,'content')
-      title:
-        select: main h1:first-of-type
+      url:
+        select: main a[href="/pod-members.json"]
         value: |
-          textContent(el)
+          innerHTML(el)

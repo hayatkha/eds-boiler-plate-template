@@ -1,0 +1,21 @@
+indices:
+  mysite:
+    include:
+      - /pod-report
+      - /form
+      - /test-page
+    target: /query-index.json
+    properties:
+      pageAuthor:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el,'content')
+      sheetUrl:
+        select: main a[href="/pod-members.json"]
+        value: |
+          innerHTML(el)
+      formUrl:
+        select: main a[href="/enquiry.json"]
+        value: |
+          innerHTML(el)
+      

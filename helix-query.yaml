@@ -3,6 +3,7 @@ indices:
     include:
       - /pod-report
       - /form
+      - /test-page
     target: /query-index.json
     properties:
       pageAuthor:
